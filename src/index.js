@@ -12,6 +12,10 @@ const typeDefs = `
     feed: [Link!]!
   }
 
+  type Mutation {
+    post(url: String!, description: String!): Link!
+  }
+
   type Link {
     id: String!
     description: String!
