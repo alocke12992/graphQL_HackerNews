@@ -10,7 +10,20 @@ let idCount = links.length
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hacker News clone`,
-    feed: () => links
+    feed: () => links,
+    getLink: (parent, args) => {
+      let link = null
+      links.map(node => {
+        if (node.id === args.id){
+          link = node
+        }
+      })
+      if (!link){
+        return `link-${args.id} does not exist`
+      } else {
+        return link
+      }
+    }
   },
   Mutation: {
     post: (parent, args) => {
