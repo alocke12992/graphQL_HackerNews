@@ -6,6 +6,16 @@ Learn how to build a GraphQL server with graphql-yoga, Node.js & Prisma and best
 > **Note**: The final project for this tutorial can be found on [GitHub](https://github.com/howtographql/graphql-js). You can always use it as a reference whenever you get lost throughout the course of the following chapters.
 > Also note that each code block is annotated with a filename. These annotations directly link to the corresponding file on GitHub so you can clearly see where to put the code and what the end result will look like.
 
+## Get started
+
+To get the project up and running, clone or download [this repository.](https://github.com/alocke12992/graphQL_HackerNews)
+
+`cd` into `graphQL_HackerNews` and run `yarn` or `npm init` to install the required dependencies.
+
+To run the server, type `yarn start` while in the root directory of the project.
+
+Once you have started your server, you can access the GraphQL playground at [http://localhost:4000](http://localhost:4000)
+
 ### Overview
 
 GraphQL is the rising star of backend technologies. It replaces REST as an API design paradigm and is becoming the new standard for exposing the data and functionality of a server.
