@@ -1,10 +1,24 @@
 const { GraphQLServer } = require("graphql-yoga");
 
-let links = [{
-  id: 'link-0',
-  url: 'www.someUrl.com',
-  description: 'some fake website URL'
-}]
+let links = [
+  {
+    id: 'link-0',
+    url: 'www.someUrl.com',
+    description: 'some fake website URL'
+  },
+  {
+    id: 'link-1',
+    url: 'www.nextUrl.com',
+    description: 'some fake website URL'
+  },
+  {
+    id: 'link-2',
+    url: 'www.thirdUrl.com',
+    description: 'some fake website URL'
+  },
+
+]
+
 let idCount = links.length
 
 const resolvers = {
@@ -50,6 +64,25 @@ const resolvers = {
         }
       })
       return updatedLink
+    },
+    deleteLink: (parent,args) => {
+      let deletedLink,
+          indexToDelete
+
+      links.map((link, index) => {
+        if (link.id === args.id) {
+          indexToDelete = index
+        }
+      })
+
+      if (typeof indexToDelete !== "undefined"){
+        deletedLink = links.splice(indexToDelete, 1)
+      }
+
+      if (deletedLink.length) {
+        return deletedLink[0]
+      }
+      return
     }
   },
   Link: {
