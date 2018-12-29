@@ -1,16 +1,7 @@
-
----
-title: Introduction
-pageTitle: "Building a GraphQL Server with Node.js & Prisma Tutorial"
-description: "Learn how to build a GraphQL server with graphql-yoga, Node.js & Prisma and best practices for authentication, filtering, pagination and subscriptions."
-question: What is a GraphQL Playground?
-answers: ["A GraphQL IDE to work with a GraphQL API", "A tool to generate GraphQL operations", "A REST client", "The successor of Postman"]
-correctAnswer: 0
----
-
-# GraphQL API for Hacker News Clone
-
+# Building a GraphQL Server with Node.js & Prisma Tutorial
 This is a tutorial taken from the [How to graphQL website.](https://www.howtographql.com/graphql-js/0-introduction/)
+
+Learn how to build a GraphQL server with graphql-yoga, Node.js & Prisma and best practices for authentication, filtering, pagination and subscriptions.
 
 > **Note**: The final project for this tutorial can be found on [GitHub](https://github.com/howtographql/graphql-js). You can always use it as a reference whenever you get lost throughout the course of the following chapters.
 > Also note that each code block is annotated with a filename. These annotations directly link to the corresponding file on GitHub so you can clearly see where to put the code and what the end result will look like.
