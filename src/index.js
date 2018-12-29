@@ -34,6 +34,9 @@ const resolvers = {
       }
       links.push(link)
       return link
+    },
+    updateLink: (parent, args) => {
+
     }
   },
   Link: {
