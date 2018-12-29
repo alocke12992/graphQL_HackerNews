@@ -1,89 +1,67 @@
 const { GraphQLServer } = require("graphql-yoga");
 
-let links = [
-  {
-    id: 'link-0',
-    url: 'www.someUrl.com',
-    description: 'some fake website URL'
-  },
-  {
-    id: 'link-1',
-    url: 'www.nextUrl.com',
-    description: 'some fake website URL'
-  },
-  {
-    id: 'link-2',
-    url: 'www.thirdUrl.com',
-    description: 'some fake website URL'
-  },
-
-]
-
-let idCount = links.length
-
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hacker News clone`,
-    feed: () => links,
-    getLink: (parent, args) => {
-      let link = null
-      links.map(node => {
-        if (node.id === args.id){
-          link = node
-        }
-      })
-      if (!link){
-        return `link-${args.id} does not exist`
-      } else {
-        return link
-      }
-    }
-  },
+    feed: () => (root, args, context, info) => {
+      return context.prisma.links()
+    },
+  //   getLink: (parent, args, context, info) => {
+  //     let link = null
+  //     links.map(node => {
+  //       if (node.id === args.id){
+  //         link = node
+  //       }
+  //     })
+  //     if (!link){
+  //       return `link-${args.id} does not exist`
+  //     } else {
+  //       return link
+  //     }
+  //   }
+  // },
   Mutation: {
-    post: (parent, args) => {
-      const link = {
-        id: `link-${idCount++}`,
-        description: args.description,
-        url: args.url
-      }
-      links.push(link)
-      return link
-    },
-    updateLink: (parent, args) => {
-      let updatedLink
-
-      links.map((link, index) => {
-        if (link.id === args.id) {
-          if (args.description) {
-            links[index].description = args.description
-          }
-          if (args.url) {
-            links[index].url = args.url
-          }
-          updatedLink = links[index]
-        }
+    post: (root, args, context) => {
+      return context.prisma.createLink({
+        url: args.url,
+        description: args.description
       })
-      return updatedLink
     },
-    deleteLink: (parent,args) => {
-      let deletedLink,
-          indexToDelete
+    // updateLink: (parent, args) => {
+    //   let updatedLink
 
-      links.map((link, index) => {
-        if (link.id === args.id) {
-          indexToDelete = index
-        }
-      })
+    //   links.map((link, index) => {
+    //     if (link.id === args.id) {
+    //       if (args.description) {
+    //         links[index].description = args.description
+    //       }
+    //       if (args.url) {
+    //         links[index].url = args.url
+    //       }
+    //       updatedLink = links[index]
+    //     }
+    //   })
+    //   return updatedLink
+    // },
+    // deleteLink: (parent,args) => {
+    //   let deletedLink,
+    //       indexToDelete
 
-      if (typeof indexToDelete !== "undefined"){
-        deletedLink = links.splice(indexToDelete, 1)
-      }
+    //   links.map((link, index) => {
+    //     if (link.id === args.id) {
+    //       indexToDelete = index
+    //     }
+    //   })
 
-      if (deletedLink.length) {
-        return deletedLink[0]
-      }
-      return
-    }
+    //   if (typeof indexToDelete !== "undefined"){
+    //     deletedLink = links.splice(indexToDelete, 1)
+    //   }
+
+    //   if (deletedLink.length) {
+    //     return deletedLink[0]
+    //   }
+    //   return
+    // }
   },
   Link: {
     id: (parent) => parent.id,
