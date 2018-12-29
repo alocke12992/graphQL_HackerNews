@@ -36,7 +36,20 @@ const resolvers = {
       return link
     },
     updateLink: (parent, args) => {
+      let updatedLink
 
+      links.map((link, index) => {
+        if (link.id === args.id) {
+          if (args.description) {
+            links[index].description = args.description
+          }
+          if (args.url) {
+            links[index].url = args.url
+          }
+          updatedLink = links[index]
+        }
+      })
+      return updatedLink
     }
   },
   Link: {
