@@ -6,23 +6,6 @@ let links = [{
   description: 'some fake website URL'
 }]
 
-const typeDefs = `
-  type Query {
-    info: String!
-    feed: [Link!]!
-  }
-
-  type Mutation {
-    post(url: String!, description: String!): Link!
-  }
-
-  type Link {
-    id: String!
-    description: String!
-    url: String!
-  }
-`
-
 const resolvers = {
   Query: {
     info: () => `This is the API of a Hacker News clone`,
@@ -36,7 +19,7 @@ const resolvers = {
 }
 
 const server = new GraphQLServer({
-  typeDefs,
+  typeDefs: "./src/schema.graphql",
   resolvers
 })
 
