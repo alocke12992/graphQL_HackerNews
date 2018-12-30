@@ -21,12 +21,7 @@ const resolvers = {
     // }
   },
   Mutation: {
-    post: (root, args, context) => {
-      return context.prisma.createLink({
-        url: args.url,
-        description: args.description
-      })
-    },
+    
     // updateLink: (parent, args) => {
     //   let updatedLink
 
@@ -73,7 +68,12 @@ const resolvers = {
 const server = new GraphQLServer({
   typeDefs: "./src/schema.graphql",
   resolvers,
-  context: { prisma },
+  context: request => { 
+    return {
+      ...request,
+      prisma,
+    }
+  },
 })
 
 server.start(() => console.log(`Server is running at http://localhost:4000`))
