@@ -10,6 +10,7 @@ const Link = require("./resolvers/Link");
 const resolvers = {
   Query,
   Mutation,
+  Subscription,
   User,
   Link
 }
