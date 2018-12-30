@@ -10,6 +10,7 @@ const feed = async (parent, args, context) => {
     where,
     skip: args.skip,
     first: args.first,
+    orderBy: args.orderBy,
   });
 
   return links;
