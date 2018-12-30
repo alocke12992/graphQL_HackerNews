@@ -44,6 +44,42 @@ function post(root, args, context, info) {
   })
 }
 
+// updateLink: (parent, args) => {
+    //   let updatedLink
+
+    //   links.map((link, index) => {
+    //     if (link.id === args.id) {
+    //       if (args.description) {
+    //         links[index].description = args.description
+    //       }
+    //       if (args.url) {
+    //         links[index].url = args.url
+    //       }
+    //       updatedLink = links[index]
+    //     }
+    //   })
+    //   return updatedLink
+    // },
+    // deleteLink: (parent,args) => {
+    //   let deletedLink,
+    //       indexToDelete
+
+    //   links.map((link, index) => {
+    //     if (link.id === args.id) {
+    //       indexToDelete = index
+    //     }
+    //   })
+
+    //   if (typeof indexToDelete !== "undefined"){
+    //     deletedLink = links.splice(indexToDelete, 1)
+    //   }
+
+    //   if (deletedLink.length) {
+    //     return deletedLink[0]
+    //   }
+    //   return
+    // }
+
 module.exports = {
   signup,
   login,
