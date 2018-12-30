@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { APP_SECRET, getUserId } = require("../utils");
 
-async function signup(parent, args, context, info) {
+const signup = async (parent, args, context, info) => {
 
   const password = await bcrypt.hash(args.password, 10);
   const user = await context.prisma.createUser({ ...args, password })
@@ -14,7 +14,7 @@ async function signup(parent, args, context, info) {
   }
 }
 
-async function login(parent, args, context, info) {
+const login = async (parent, args, context, info) => {
   const user = await context.prisma.user({ email: args.email })
   
   if (!user) {
@@ -35,7 +35,7 @@ async function login(parent, args, context, info) {
   }
 }
 
-function post(root, args, context, info) {
+const post = (root, args, context, info) => {
   const userId = getUserId(context)
   return context.prisma.createLink({
     url: args.url,
@@ -43,42 +43,6 @@ function post(root, args, context, info) {
     postedBy: { connect: {id: userId }}
   })
 }
-
-// updateLink: (parent, args) => {
-    //   let updatedLink
-
-    //   links.map((link, index) => {
-    //     if (link.id === args.id) {
-    //       if (args.description) {
-    //         links[index].description = args.description
-    //       }
-    //       if (args.url) {
-    //         links[index].url = args.url
-    //       }
-    //       updatedLink = links[index]
-    //     }
-    //   })
-    //   return updatedLink
-    // },
-    // deleteLink: (parent,args) => {
-    //   let deletedLink,
-    //       indexToDelete
-
-    //   links.map((link, index) => {
-    //     if (link.id === args.id) {
-    //       indexToDelete = index
-    //     }
-    //   })
-
-    //   if (typeof indexToDelete !== "undefined"){
-    //     deletedLink = links.splice(indexToDelete, 1)
-    //   }
-
-    //   if (deletedLink.length) {
-    //     return deletedLink[0]
-    //   }
-    //   return
-    // }
 
 module.exports = {
   signup,
