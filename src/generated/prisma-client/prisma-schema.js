@@ -1,5 +1,6 @@
+/* eslint-disable indent */
 module.exports = {
-        typeDefs: /* GraphQL */ `type AggregateLink {
+  typeDefs: /* GraphQL */ `type AggregateLink {
   count: Int!
 }
 
@@ -758,6 +759,5 @@ input VoteWhereInput {
 input VoteWhereUniqueInput {
   id: ID
 }
-`
-      }
-    
+`,
+};
