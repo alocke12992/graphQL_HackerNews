@@ -19,7 +19,7 @@ const Feed = ({links}) => {
             <tr>
               <Link link={link} rank={index} />
             </tr>
-            <tr>
+            <tr className='subtext'>
               <Subtext link={link} />
             </tr>
           </Fragment>
