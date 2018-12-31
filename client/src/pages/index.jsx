@@ -1,17 +1,18 @@
 import React from 'react';
-import Layout from '../components/Layout.jsx';
 import { graphql } from 'gatsby';
-import Feed from '../components/Feed';
+import Layout from '../components/Layout.jsx';
+import Feed from '../components/Feed.jsx';
 
-export default (data) => {
-  const { links } = data.data.hql.feed
-  return(
+const Index = (data) => {
+  const { links } = data.data.hql.feed;
+  return (
   <Layout>
     <Feed links={links} />
   </Layout>
-)
-}
+  );
+};
 
+export default Index;
 export const query = graphql`
   query FeedQuery {
     hql {
@@ -20,6 +21,9 @@ export const query = graphql`
           id
           description
           url
+          postedBy {
+            name
+          }
           votes {
             id
           }
@@ -27,4 +31,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;

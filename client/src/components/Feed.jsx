@@ -1,10 +1,10 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
+import { css } from '@emotion/core';
 import Link from './Link.jsx';
 import Subtext from './Subtext.jsx';
-import { css } from '@emotion/core';
 
-const Feed = ({links}) => {
-  console.log(links)
+const Feed = ({ links }) => {
+  console.log(links);
   return (
     <table css={css`
       border: 0;
@@ -13,8 +13,7 @@ const Feed = ({links}) => {
     `}>
       <tbody>
         {
-        links.map((link, index) => {
-        return (
+        links.map((link, index) => (
           <Fragment key={link.id}>
             <tr>
               <Link link={link} rank={index} />
@@ -23,11 +22,10 @@ const Feed = ({links}) => {
               <Subtext link={link} />
             </tr>
           </Fragment>
-        )
-        })}
+        ))}
       </tbody>
   </table>
-  )
+  );
 };
 
 export default Feed;

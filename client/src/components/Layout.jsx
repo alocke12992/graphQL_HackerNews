@@ -1,9 +1,9 @@
 import React from 'react';
-import Navbar from './Navbar';
 import { css } from '@emotion/core';
+import Navbar from './Navbar';
 import { rhythm } from '../utils/typography';
 
-export default ({ children }) => (
+const Layout = ({ children }) => (
   <div
   css={css`
     margin: 0 auto;
@@ -15,4 +15,6 @@ export default ({ children }) => (
     <Navbar />
     {children}
   </div>
-)
+);
+
+export default Layout;
