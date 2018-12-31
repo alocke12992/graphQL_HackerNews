@@ -5,8 +5,8 @@ const Subtext = ({link}) => {
     <>
       <td colSpan='2'></td>
       <td class="subtext">
-      <span class="score" id="score_18794545">166 points </span>
-        by <a href="user?id=bladecatcher" className="hnuser">bladecatcher</a> 
+      <span class="score" id="score_18794545">{link.voteCount} points </span>
+        by <a  className="hnuser">"Name"</a> 
       <span className="age">
       {/* TODO, calculate hours since created */}
         <a href="item?id=18794545">4 hours ago</a>
