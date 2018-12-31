@@ -26,6 +26,9 @@ const feed = async (parent, args, context) => {
   };
 };
 
+const getLink = (parent, args, context) => context.prisma.link({ id: args.id });
+
 module.exports = {
   feed,
+  getLink,
 };
